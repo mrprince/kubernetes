@@ -1,6 +1,12 @@
 # kubernetes
 Host IPAddress: 192.168.0.165
-
+Disable firewall, disable selinux:
+```
+systemctl disable firewalld
+systemctl stop firewalld
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+setenforce 0
+```
 ## 1. Install Certificate 
 ```
 curl -s https://raw.githubusercontent.com/mrprince/kubernetes/master/make-ca-cert.sh| bash -s 192.168.0.165 IP:10.254.0.1,DNS:kubernetes,DNS:kubernetes.default,DNS:kubernetes.default.svc,DNS:kubernetes.default.svc.cluster.local
@@ -20,6 +26,11 @@ ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379"
 ETCD_ADVERTISE_CLIENT_URLS="http://0.0.0.0:2379"
 
 vi /etc/kubernetes/apiserver
+#KUBE_API_ADDRESS="--insecure-bind-address=127.0.0.1"
+KUBE_API_ADDRESS="--insecure-bind-address=0.0.0.0"
+#KUBE_ETCD_SERVERS="--etcd-servers=http://127.0.0.1:2379"
+KUBE_ETCD_SERVERS="--etcd-servers=http://192.168.0.165:2379"
+#KUBE_API_ARGS=""
 KUBE_API_ARGS="--client_ca_file=/srv/kubernetes/ca.crt  --tls-private-key-file=/srv/kubernetes/server.key --tls-cert-file=/srv/kubernetes/server.cert"
 
 vi /etc/kubernetes/controller-manager
