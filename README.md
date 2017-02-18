@@ -64,3 +64,9 @@ yum install cockpit cockpit-kubernetes -y
 systemctl enable cockpit.socket
 systemctl start cockpit.socket
 ```
+
+## 6. Test
+```
+kubectl create -f https://github.com/mrprince/kubernetes/raw/master/test-pod.yml
+```
+Visit https://192.168.0.165:9090/
