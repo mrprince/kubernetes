@@ -45,4 +45,8 @@ KUBELET_HOSTNAME="--hostname-override=192.168.0.165"
 KUBELET_API_SERVER="--api-servers=http://192.168.0.165:8080"
 #KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest"
 KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=rhel7/pod-infrastructure:latest"
+
+vi /usr/lib/systemd/system/docker.service
+#ExecStart=/usr/bin/docker-current daemon \ExecStart=/usr/bin/docker-current daemon --registry-mirror=https://nexus.xxx.com \
+
 ```
