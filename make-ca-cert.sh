@@ -21,7 +21,7 @@ set -o pipefail
 cert_ip=$1
 extra_sans=${2:-}
 cert_dir=/srv/kubernetes
-cert_group=Kubernetes
+cert_group=kube
 
 mkdir -p "$cert_dir"
 
