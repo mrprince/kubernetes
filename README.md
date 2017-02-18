@@ -35,4 +35,14 @@ KUBE_API_ARGS="--client_ca_file=/srv/kubernetes/ca.crt  --tls-private-key-file=/
 
 vi /etc/kubernetes/controller-manager
 KUBE_CONTROLLER_MANAGER_ARGS="--service_account_private_key_file=/srv/kubernetes/server.key --root-ca-file=/srv/kubernetes/ca.crt"
+
+vi /etc/kubernetes/kubelet 
+#KUBELET_ADDRESS="--address=127.0.0.1"
+KUBELET_ADDRESS="--address=0.0.0.0"
+#KUBELET_HOSTNAME="--hostname-override=127.0.0.1"
+KUBELET_HOSTNAME="--hostname-override=192.168.0.165"
+#KUBELET_API_SERVER="--api-servers=http://127.0.0.1:8080"
+KUBELET_API_SERVER="--api-servers=http://192.168.0.165:8080"
+#KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest"
+KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=rhel7/pod-infrastructure:latest"
 ```
