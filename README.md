@@ -1,4 +1,4 @@
-# Centos7 Install Kubernetes Cluster On One Host
+# Centos7 Install Kubernetes Cluster & Fabric8 On One Host
 Host IPAddress: 192.168.0.165
 Disable firewall, disable selinux:
 ```
@@ -80,4 +80,11 @@ kubectl create -f https://github.com/mrprince/kubernetes/raw/master/test-pod.yml
 ```
 Visit https://192.168.0.165:9090/
 
-
+## 8. Install Fabric8
+```
+wget https://github.com/fabric8io/gofabric8/releases/download/v0.4.115/gofabric8-linux-amd64
+chmod +x gofabric8-linux-amd64
+kuberctl create namespace fabric8
+./gofabric8-linux-amd64 -s http://192.168.0.165:8080 --domain=f8.io  --namespace="fabric8" deploy
+./gofabric8-linux-amd64 -s http://192.168.0.165:8080 --namespace="fabric8" volumes
+```
