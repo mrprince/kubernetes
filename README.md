@@ -48,5 +48,12 @@ KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=rhel7/pod-infrastructur
 
 vi /usr/lib/systemd/system/docker.service
 #ExecStart=/usr/bin/docker-current daemon \ExecStart=/usr/bin/docker-current daemon --registry-mirror=https://nexus.xxx.com \
+```
 
+## 4. Start Kubernetes
+```
+for SERVICE in docker etcd kube-apiserver kube-controller-manager kube-scheduler kube-proxy kubelet; do 
+    systemctl restart $SERVICE
+    systemctl enable $SERVICE
+done
 ```
