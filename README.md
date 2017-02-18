@@ -65,8 +65,16 @@ systemctl enable cockpit.socket
 systemctl start cockpit.socket
 ```
 
-## 6. Test
+## 6. Install DNS
+```
+kubectl crete -f https://github.com/mrprince/kubernetes/raw/master/kubedns-svc.yaml
+# need to change - --kube-master-url=http://192.168.0.165:8080
+kubectl crete -f https://github.com/mrprince/kubernetes/raw/master/kubedns-controller.yaml
+```
+## 7. Test
 ```
 kubectl create -f https://github.com/mrprince/kubernetes/raw/master/test-pod.yml
 ```
 Visit https://192.168.0.165:9090/
+
+
