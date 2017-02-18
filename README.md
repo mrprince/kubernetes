@@ -1,4 +1,4 @@
-# kubernetes
+# Centos7 Install Kubernetes Cluster On One Host
 Host IPAddress: 192.168.0.165
 Disable firewall, disable selinux:
 ```
@@ -56,4 +56,11 @@ for SERVICE in docker etcd kube-apiserver kube-controller-manager kube-scheduler
     systemctl restart $SERVICE
     systemctl enable $SERVICE
 done
+```
+
+## 5. Install Cockpit
+```
+yum install cockpit cockpit-kubernetes -y
+systemctl enable cockpit.socket
+systemctl start cockpit.socket
 ```
