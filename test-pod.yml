@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: test
+    role: master
+  name: test
+spec:
+  containers:
+    - name: test
+      image: mrprince/alpine-nginx  
