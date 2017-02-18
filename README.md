@@ -84,7 +84,7 @@ Visit https://192.168.0.165:9090/
 ```
 wget https://github.com/fabric8io/gofabric8/releases/download/v0.4.115/gofabric8-linux-amd64
 chmod +x gofabric8-linux-amd64
-kuberctl create namespace fabric8
-./gofabric8-linux-amd64 -s http://192.168.0.165:8080 --domain=f8.io  --namespace="fabric8" deploy
-./gofabric8-linux-amd64 -s http://192.168.0.165:8080 --namespace="fabric8" volumes
+kubectl create namespace fabric8
+./gofabric8-linux-amd64 -s http://192.168.0.165:8080 --domain=f8.io  --namespace="fabric8" deploy -y
+./gofabric8-linux-amd64 -s http://192.168.0.165:8080 --namespace="fabric8" volumes -y
 ```
