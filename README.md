@@ -70,6 +70,9 @@ systemctl start cockpit.socket
 kubectl crete -f https://github.com/mrprince/kubernetes/raw/master/kubedns-svc.yaml
 # need to change - --kube-master-url=http://192.168.0.165:8080
 kubectl crete -f https://github.com/mrprince/kubernetes/raw/master/kubedns-controller.yaml
+
+vi /etc/kubernetes/kubelet
+KUBELET_ARGS="--cluster_dns=10.254.0.10 --cluster_domain=cluster.local"
 ```
 ## 7. Test
 ```
