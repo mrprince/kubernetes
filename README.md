@@ -31,7 +31,7 @@ KUBE_API_ADDRESS="--insecure-bind-address=0.0.0.0"
 #KUBE_ETCD_SERVERS="--etcd-servers=http://127.0.0.1:2379"
 KUBE_ETCD_SERVERS="--etcd-servers=http://192.168.0.165:2379"
 #KUBE_API_ARGS=""
-KUBE_API_ARGS="--client_ca_file=/srv/kubernetes/ca.crt  --tls-private-key-file=/srv/kubernetes/server.key --tls-cert-file=/srv/kubernetes/server.cert"
+KUBE_API_ARGS="--client_ca_file=/srv/kubernetes/ca.crt  --tls-private-key-file=/srv/kubernetes/server.key --tls-cert-file=/srv/kubernetes/server.cert --allow-privileged=true"
 
 vi /etc/kubernetes/controller-manager
 KUBE_CONTROLLER_MANAGER_ARGS="--service_account_private_key_file=/srv/kubernetes/server.key --root-ca-file=/srv/kubernetes/ca.crt"
@@ -72,7 +72,7 @@ kubectl crete -f https://github.com/mrprince/kubernetes/raw/master/kubedns-svc.y
 kubectl crete -f https://github.com/mrprince/kubernetes/raw/master/kubedns-controller.yaml
 
 vi /etc/kubernetes/kubelet
-KUBELET_ARGS="--cluster_dns=10.254.0.10 --cluster_domain=cluster.local"
+KUBELET_ARGS="--cluster_dns=10.254.0.10 --cluster_domain=cluster.local --allow-privileged=true"
 ```
 ## 7. Test
 ```
